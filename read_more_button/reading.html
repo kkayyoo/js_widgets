@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    .expanded-content {
+      height: 100px;
+      overflow: hidden;
+    }
+    .expanded {
+      height: 100%;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div class="reading">
+        <div class="expanded-content">
+          <p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Lorem ipsum dolor sit amet conse.</p>
+          <p>Sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
+        </div>
+        <div class="btn">
+            <button class="button expanded-button">Continue Reading</button>
+        </div>
+    </div>
+
+    <div class="reading">
+        <div class="expanded-content">
+          <p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo. Lorem ipsum dolor sit amet conse.</p>
+          <p>Sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
+        </div>
+        <div class="btn">
+            <button class="button expanded-button">Continue Reading</button>
+        </div>
+    </div>
+
+    <div class="reading">
+        <div class="expanded-content">
+          <p>Sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+        </div>
+        <div class="btn">
+            <button class="button sexpanded-button">Continue Reading</button>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        (function(){
+            var num = 300,
+                $reading = $('.reading');
+
+            var showButton = function(num) {
+
+                $reading.each(function(){
+
+                    var $text = $(this).find('.expanded-content'),
+                        $text_length = $text.text().length,
+                        $button = $(this).find('.btn');
+                    //hide button
+                    if($text_length > num) {
+                        $button.show();
+                    }else{
+                        $button.hide();
+                    };
+
+                    $button.on('click', function(e){
+                        e.preventDefault();
+                        var $text_btn = $(this).find('.expanded-button');
+                        //show content
+                        $text.toggleClass('expanded');
+
+                        //change button text content
+                        if($text.hasClass('expanded')){
+                            $text_btn.html('Show Less');
+                        }else{
+                            $text_btn.html('Continue Reading');
+                        }
+                    });
+
+                });
+            }
+
+            showButton(num);
+
+        })()
+
+    </script>
+
+  </body>
+</html>
